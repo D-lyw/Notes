@@ -1,6 +1,8 @@
-##vue中set-cookie跨域配置
+#vue中set-cookie跨域配置
+
 > 问题情景：在基于vue的项目，进行与后台数据接口对接时，出了登陆接口显示登陆成功外，其他接口均返回未登陆的信息
 > 后询问得知，后台采用set-cookie的方式，进行登陆权限验证
+
 
 简单的就是将首次登陆成功返回的response header中的set-cookie存到浏览器的cookie中，在后续对后台的请求中在request header上加上该cookie就行
 
@@ -19,6 +21,7 @@ Vue.prototype.$axios = axios;
 
 ```
 
+<br>
 >在浏览器中，在请求响应的响应头里面其实是有 set-cookie 的值的，因为这是***跨域set-cookie*** ，后台都需要些配置
 
 
@@ -45,6 +48,7 @@ Vue.prototype.$axios = axios;
 ```
 
 ```
+
 		// 允许跨域请求中携带cookie
 
         response.setHeader("Access-Control-Allow-Credentials", "true");
