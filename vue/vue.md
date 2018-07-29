@@ -3,8 +3,11 @@
 1. 在axios中不支持vue.use()方法，为了避免在每个组件中引入axios，可以用下面原型链的方式
 	
 	> 1 . // 在main.js中执行如下代码
+	
 	> 2 . import axios from 'axios';
+	
 	> 3 . Vue.prototype.$axios = axios;
+	
 	> 4 . // 则在其他vue组件中就可以通过 this.$axios 使用
 
 <br>
