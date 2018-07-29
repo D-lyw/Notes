@@ -1,6 +1,6 @@
   # node.js入门教程
 
-1. [nodejs和npm的安装](#1. nodejs和npm的安装)
+1. [nodejs和npm的安装](#1-nodejs和npm的安装)
 2. [体验一下](#2. 体验一下)
 3. [Hello World 之 Node.js](#three)
 4. [基础之Npm使用](#four)
@@ -11,7 +11,7 @@
 
 
 
-### 1. <span id = 'one'>nodejs和npm的安装</span>
+### 1. nodejs和npm的安装
 
 可从[Node.js](https://nodejs.org/en/download/)官网,下载对应平台的nodejs版本进行安装，(window系统，可勾选Add to Path 添加到环境变量中）
 
