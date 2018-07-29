@@ -3,7 +3,7 @@
 1. [nodejs和npm的安装](#one)
 2. [体验一下](#two)
 3. [Hello World 之 Node.js](#three)
-4. [基础之Npm使用](#foru)
+4. [基础之Npm使用](#four)
 5. [Node之模块](#five)
 6. [熟悉常用的内置模块](#six)
 7. [express框架](#seven)
