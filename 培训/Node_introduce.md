@@ -1,6 +1,6 @@
-#node.js入门教程
+# node.js入门教程
 
-###1. nodejs和npm的安装
+### 1. nodejs和npm的安装
 
 可从[Node.js](https://nodejs.org/en/download/)官网,下载对应平台的nodejs版本进行安装，(window系统，可勾选Add to Path 添加到环境变量中）
 
@@ -36,7 +36,7 @@ npm其实是Node.js的包管理工具（package manager）
 
 <br>
 
-###2. 体验一下
+### 2. 体验一下
 ***Node的交互模式***  我们输入js代码可立即执行
 
 			C：\User\D-lyw>node
