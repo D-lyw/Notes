@@ -178,7 +178,9 @@ npm其实是Node.js的包管理工具（package manager）
 变量showAge 存储的是 testA模块中导出的showAge() 函数， 然后我们就可以在app.js中使用testA模块中的showAge方法了
 
 在引用时注意引用的路径，上面两个文件是在同一目录下，所以用的相对路径
+
 如果是通过 *require('testA')* 的方式引用
+
 则node 会依次在内置模块、全局模块（即node_modules文件夹）下查找testA文件，如果查找不到，就会报错！
 
 这种模块加载机制被称为***CommonJS规范***
@@ -187,6 +189,7 @@ npm其实是Node.js的包管理工具（package manager）
 一个模块要引用其他模块暴露的变量，用 **var ref = require('module_name')**;就拿到了引用模块的变量。
 
 \# 篇幅有限，如想进一步了解Commonjs规范，可学习https://www.cnblogs.com/chenweixuan/p/4713710.html
+
 
 
 ### 6. 熟悉常用的内置模块
@@ -198,8 +201,9 @@ https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3
 
 可跟着其中教程的指导，对这些模块进行快速了解
 
+
 ### 7. express框架 <重点> 
-网上教程很多，不重复累赘，送你去https://www.runoob.com/nodejs/nodejs-express-framework.html
+网上教程很多，不重复累赘了，送你去https://www.runoob.com/nodejs/nodejs-express-framework.html
 
 跟着菜鸟上的教程跑一遍, 理解一下，尝试着做点东西。
 
