@@ -6,8 +6,8 @@
 
 在命令行界面输入以下两个命令，检验是否安装成功：
 
-		# node -v		//查看node版本
-		# npm -v		//查看npm版本
+	# node -v		//查看node版本
+	# npm -v		//查看npm版本
 
 
 linux安装（官网下载源码或已编译的二进制文件进行安装）
@@ -106,21 +106,35 @@ npm其实是Node.js的包管理工具（package manager）
 ### 4.基础之Npm使用
 掌握npm常用命令
 - npm 升级命令
+ 
 		npm install npm -g 					// -g 指全局安装，下同
+
 - npm 安装模块
+
 		npm install <Moudle Name>			//Moudle Name指模块名
 		例 安装常用web框架 express：
 		npm install express 
+
 - npm 查看安装信息
+
 		npm list -g      					//查看全局安装的模块
+
 - npm 卸载模块
+
 		npm uninstall <Moudle Name>
+
 - npm 更新模块
+
 		npm update <Moudle Name>
+
 - npm 查看某个模块的版本号
+
 		npm list grunt
+
 - npm 搜索模块
+
  		npm search <Moudle Name>
+
 - npm help 可通过npm help 查看所有命令
 
 通过npm安装的模块都在项目中的node_modules文件夹中，是全局安装的则在全局的node_modules文件夹中，widow系统中全局的node_modules一般在系统盘 用户文件夹下，如：C:\Users\D-lyw 里面
