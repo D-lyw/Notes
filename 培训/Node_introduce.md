@@ -1,6 +1,7 @@
-#node.js入门教程
+#node.js入门教程#
 
-###1. nodejs和npm的安装
+###1. nodejs和npm的安装###
+
 可从[Node.js](https://nodejs.org/en/download/)官网,下载对应平台的nodejs版本进行安装，(window系统，可勾选Add to Path 添加到环境变量中）
 
 在命令行界面输入以下两个命令，检验是否安装成功：
@@ -10,6 +11,7 @@
 
 
 <br>
+
 >node.js是什么？
 
 Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
@@ -21,6 +23,7 @@ Node.js还提供了各种丰富的JavaScript模块库（自带的+第三方提�
 
 Node.js = 运行环境+ JavaScript库（模块）
 
+<br>
 
 >npm是啥？
 
@@ -30,6 +33,8 @@ npm其实是Node.js的包管理工具（package manager）
 + 自动帮你解决你引用的模块的依赖关系（如：你引用的模块，若引用了其他的模块，你就需要把它依赖的模块也下下来）
 
 \#注：各类大同小异的包管理工具，基本都是起上述两点作用，帮助开发者提高开发效率
+
+<br>
 
 ###2. 体验一下
 ***Node的交互模式***  我们输入js代码可立即执行
@@ -51,5 +56,5 @@ npm其实是Node.js的包管理工具（package manager）
 
 执行 node test.js ,    输出结果					
 
-		C：\User\D-lyw\node test.js				//注意你创建的test.js文件的位置，不然node命令会找不到该文件
+		C：\User\D-lyw\node test.js	 //注意你创建的test.js文件的位置，不然node命令会找不到该文件
 		Your name is 张三
