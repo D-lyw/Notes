@@ -1,12 +1,12 @@
   # node.js入门教程
 
 1. [nodejs和npm的安装](#1-nodejs和npm的安装)
-2. [体验一下](#2. 体验一下)
-3. [Hello World 之 Node.js](#three)
-4. [基础之Npm使用](#four)
-5. [Node之模块](#five)
-6. [熟悉常用的内置模块](#six)
-7. [express框架](#seven)
+2. [体验一下](#2-体验一下)
+3. [Hello World 之 Node.js](#3-Hello World 之 Node.js)
+4. [基础之Npm使用](#4-基础之Npm使用)
+5. [Node之模块](#5-Node之模块)
+6. [熟悉常用的内置模块](#6-熟悉常用的内置模块)
+7. [express框架](#7-express框架<重点>)
 
 
 
@@ -56,7 +56,7 @@ npm其实是Node.js的包管理工具（package manager）
 
 <br>
 
-### 2. <span id='two'>体验一下</span>
+### 2. 体验一下
 ***Node的交互模式***  我们输入js代码可立即执行
 
 	C：\User\D-lyw>node
@@ -79,7 +79,7 @@ npm其实是Node.js的包管理工具（package manager）
 	C：\User\D-lyw\node test.js	 //注意你创建的test.js文件的位置，不然node命令会找不到该文件
 	Your name is 张三
 
-### 3. <span id ='three'>Hello World 之 Node.js</span> 
+### 3. Hello World 之 Node.js 
 
 创建node.js 应用
 
@@ -114,7 +114,7 @@ npm其实是Node.js的包管理工具（package manager）
 
 而在浏览器输入localhost：8080，就可以看到我们返回的Hello World.
 
-### 4.<span id="four">基础之Npm使用</four>
+### 4. 基础之Npm使用
 掌握npm常用命令
 - npm 升级命令
  
@@ -159,7 +159,7 @@ npm其实是Node.js的包管理工具（package manager）
 	# cnpm install <Moudle Name>
 
 
-### 5. <span id="five">Node之模块</span>
+### 5. Node之模块
 
 > 在一个项目中随着项目的开发，一个文件里面的代码可能越来越多，越长，不宜与维护；
 > 为了编写便于可维护、优雅的代码，我们将其分组，分别放到不同文件中，好多编程语言都采用这种方式
@@ -203,7 +203,7 @@ npm其实是Node.js的包管理工具（package manager）
 
 
 
-### 6. <span id = 'six'>熟悉常用的内置模块</span>
+### 6. 熟悉常用的内置模块
 
 >常用的模块有fs模块（文件读写），os模块（提供基本的系统操作）， path模块（处理、转化文件路径），crypto模块（提供通用的加密和哈希算法）等等，都可以实际操作尝试一下
 
@@ -213,7 +213,7 @@ https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3
 可跟着其中教程的指导，对这些模块进行快速了解
 
 
-### 7. <span id='seven'>express框架</span> <重点> 
+### 7. express框架<重点> 
 网上教程很多，不重复累赘了，送你去https://www.runoob.com/nodejs/nodejs-express-framework.html
 
 跟着菜鸟上的教程跑一遍, 理解一下，尝试着做点东西。
