@@ -48,13 +48,13 @@ npm其实是Node.js的包管理工具（package manager）
 ### 2. 体验一下
 ***Node的交互模式***  我们输入js代码可立即执行
 
-			C：\User\D-lyw>node
-			>
+		C：\User\D-lyw>node
+		>
 		
 例如：在该环境下，输入以下，回车：
 
-			> 5*9 - 40
-			5
+		> 5*9 - 40
+		5
 可以看到输出的结果 5
 
 如果我们将js代码写在.js文件中，我们使用命令    *node 文件.js*

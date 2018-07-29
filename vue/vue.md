@@ -1,11 +1,14 @@
-##Vue中axios记录
+## Vue中axios记录
 
 1. 在axios中不支持vue.use()方法，为了避免在每个组件中引入axios，可以用下面原型链的方式
 	
-	>1. // 在main.js中执行如下代码
-	>2. import axios from 'axios';
-	>3. Vue.prototype.$axios = axios;
-	>4. // 则在其他vue组件中就可以通过 this.$axios 使用
+	> 1 .  // 在main.js中执行如下代码
+	
+	> 2 .  import axios from 'axios';
+	
+	> 3 .  Vue.prototype.$axios = axios;
+	
+	> 4 .  // 则在其他vue组件中就可以通过 this.$axios 使用
 
 <br>
 2. 前后端接口对接时的跨域问题，项目采用前后端分离的方式，前端的代码在本地，后台接口给的是远程服务器的地址；
