@@ -3,8 +3,8 @@
 1. [nodejs和npm的安装](#1-nodejs和npm的安装)
 2. [体验一下](#2-体验一下)
 3. [Hello World 之 Node.js](#3-hello-world-之-nodejs)
-4. [基础之Npm使用](#4-基础之Npm使用)
-5. [Node之模块](#5-Node之模块)
+4. [基础之Npm使用](#4-基础之npm使用)
+5. [Node之模块](#5-node之模块)
 6. [熟悉常用的内置模块](#6-熟悉常用的内置模块)
 7. [express框架](#7-express框架重点)
 
