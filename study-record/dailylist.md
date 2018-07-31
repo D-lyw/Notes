@@ -53,3 +53,6 @@ July 31, 2018 10:37 PM
 	</tr>
     </tbody>
 </table>
+
+<input type="checkbox" />
+<input type="radio" />
