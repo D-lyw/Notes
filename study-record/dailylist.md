@@ -14,3 +14,27 @@ July 30, 2018 9:47 PM
 	+ 什么是自由软件https://www.gnu.org/philosophy/free-sw.zh-cn.html
 
 ___
+
+<br>
+
+
+July 31, 2018 10:37 PM
+---
+
+1. >d sf
+2. > dsfdsfewfdsf;
+3. > dsf2jr23ijsdf 
+4. 
+
+
+
+
+
+## == 08, 2018 学习记录==
+| |
+|-------------------------------------------------------------------|
+| 1 | 2 |3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |11 | 12 | 13 | 14 | 15 |   |
+| <input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'>|<input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'> | <input type='checkbox'>| <input type='checkbox'> |<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|
+|16 | 17|18|19| 20|21 | 22| 23 | 24|25  | 26| 27 | 28 | 29 | 30 | 31|
+| <input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'>|<input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'> | <input type='checkbox'>| <input type='checkbox'> |<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|
+
