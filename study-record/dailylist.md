@@ -28,21 +28,16 @@ July 31, 2018 10:37 PM
 
 
 ## ==08, 2018 学习记录==
+ - [x] 1号
 
-<table><tbody><tbody><tr><td>dsafds</td><td>dsfad</td></tr>
-</table>
-<table>
-	<tbody>
-    	<tr>
-        	<td>1</td> <td>2</td> <td>3</td> <td>4</td><td>5</td> <td>6</td> <td>7</td> <td>8</td> <td>9</td><td>10</td><td>11</td><td>12</td> <td>13</td> <td>14</td> <td>15</td>
-        </tr>
-        <tr>
-		<td><input type="checkbox"></td>
-		<td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td>
-		<td><input type="checkbox"></td>
-	</tr>
-    </tbody>
-</table>
 
+
+August 1, 2018 4:55 PM
+---
+
+1. > 这两条在用markdown写东西时，总发现在本地写好的样式，push到github上后，样式没有被识别，总感觉有那么点坑，无奈。
+我在window上用markdownpro作为编辑器，linux上安装的haroopad，总体感觉markdownpro用起来更舒服些
+2. > markdown语法不复杂，但各个编辑器之间，还有些差异，而且在html语法的使用 上，发现有些标签怎么没有被识别，难受。
+	+ 这次在linux上使用haroopag编辑时，发现编辑之后查看 git status -s 查看状态，总是最新状态无更新 。一番查看，原来是每次编辑之后，haroopag无法保存，原来是我clone下载时是root权限，当我以用户权限编辑时，无法保存，window下就不会存在这种问题。
 
  
