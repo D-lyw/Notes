@@ -27,17 +27,7 @@ July 31, 2018 10:37 PM
 4. 
 
 
-
-
-
 ## ==08, 2018 学习记录==
-
-| | | | | | | | | |  || |||||
-|--|-|-|-|-|-|-|-|-|-|-|-|-|-|--|-|--|-|-|---------------------|
-| 1 | 2 |3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |11 | 12 | 13 | 14 | 15 |   |
-| <input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'>|<input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'> | <input type='checkbox'>| <input type='checkbox'> |<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|
-|16 | 17|18|19| 20|21 | 22| 23 | 24|25  | 26| 27 | 28 | 29 | 30 | 31|
-| <input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'>|<input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'>| <input type='checkbox'> | <input type='checkbox'>| <input type='checkbox'> |<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|<input type='checkbox'>|
 
 <table><tbody><tbody><tr><td>dsafds</td><td>dsfad</td></tr>
 </table>
@@ -54,13 +44,5 @@ July 31, 2018 10:37 PM
     </tbody>
 </table>
 
-<input type="checkbox" />
-<input type="radio" />
--[ ] ds
-- [ ] sd
 
-
-
- - [ ] sdf
- - [ ] dsfewfef
  
