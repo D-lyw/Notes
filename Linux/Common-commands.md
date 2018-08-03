@@ -1,8 +1,9 @@
 
 
 # **Common commands for Linux**
+<br>
 
-1. > ## File Commands
+1. >  ## File Commands
 	+ >    ***ls*** 				    -list catalog
 	+ >    ***ls -al***				 -a all file(include hidden file) -l format detailed information
     + >    ***cd dir***				 -change directory to dir 
@@ -21,9 +22,11 @@
 	+ >    ***head file***				-look at the first 10 lines of file
 	+ >    ***tail file***				-look at the last 10 lines of file
 
+<br>
 
 2. > ## Process Management
-	+ > **ps**            --show current activity process
+
+	- > **ps**            --show current activity process
 	+ > **top**  --show all running processes
 	- > **kill pid**  --kill process *id pid*
 	- > **killall proc** --kill all processess named "proc \*"
