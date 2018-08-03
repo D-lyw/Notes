@@ -25,11 +25,34 @@
 <br>
 
 2. > ## Process Management
-
 	- > **ps**            --show current activity process
 	+ > **top**  --show all running processes
 	- > **kill pid**  --kill process *id pid*
 	- > **killall proc** --kill all processess named "proc \*"
 	- > **bg**      --list the jobs that have stopped or backstage work
 	- > **fg**  --bring the latest work to the front
-	- > ** fg n ** --bring work N to front
+	- > **fg n** --bring work N to front
+
+
+<br>
+
+3. > ## File Permission
+	- > ***chmod octal file***     -change file permission
+		+ 4 -read(r)
+		+ 2 -write(w)
+		+ 1 -execute(x)
+	> eg:
+	> **chmod 777** - add read, write, execute permission for all user
+	> **chmod 755** - add rwx permission for owner,add rx permission for group and other users.
+
+<br>
+
+3. > ## SSH
+	- > ***ssh user@host***   -connect to host with user identify
+	- > ***ssh -p port user@host*** -connect to host with user at port
+	- > ***ssh-copy-id user@host *** -add secret key to host login without password
+
+<br>
+
+4. >## Search
+	- > ***grep pattern file*** 
