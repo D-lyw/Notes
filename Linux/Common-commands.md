@@ -3,7 +3,6 @@
 # **Common commands for Linux**
 
 1. > ## File Commands
->
 	+ >    ***ls*** 				    -list catalog
 	+ >    ***ls -al***				 -a all file(include hidden file) -l format detailed information
     + >    ***cd dir***				 -change directory to dir 
@@ -24,7 +23,6 @@
 
 
 2. > ## Process Management
->
 	+ > **ps**            --show current activity process
 	+ > **top**  --show all running processes
 	- > **kill pid**  --kill process *id pid*
