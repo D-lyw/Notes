@@ -43,23 +43,23 @@
 		+ 1 -execute(x)
 	- > eg:
 	
-	- > **chmod 777** - add read, write, execute permission for all user
+	- > ***chmod 777*** - add read, write, execute permission for all user
 	
-	- > **chmod 755** - add rwx permission for owner,add rx permission for group and other users.
+	- > ***chmod 755*** - add rwx permission for owner,add rx permission for group and other users.
 
 <br>
 
 3. > ## SSH
 	- > ***ssh user@host***   -connect to host with user identify
 	- > ***ssh -p port user@host*** -connect to host with user at port
-	- > ***ssh-copy-id user@host *** -add secret key to host login without password
+	- > ***ssh-copy-id user@host*** -add secret key to host login without password
 
 <br>
 
 4. >## Search
 	- > ***grep pattern file***  --search for content of pattern in file
-	- > *** grep -r pattern dir  --recursive search for content of pattern in dir
-	- > command | grep pattern  -- search for content of pattern in output pattern
+	- > ***grep -r pattern dir***  --recursive search for content of pattern in dir
+	- > ***command | grep pattern***  -- search for content of pattern in output pattern
 
 <br>
 
@@ -73,31 +73,31 @@
 	- > ***uname -a***  --show kernel information
 	- >***cat /proc/cpuinfo***   -- show cpu information
 	- > ***cat /proc/meminfo*** --show memory informtion
-	- > *** man command***  --show command instruction manual
+	- > ***man command***  --show command instruction manual
 	- > ***df*** --show disk occupancy
 	- > ***du*** --show directory space occupancy
-	- > *** free*** --show memory and swap area occupancy
+	- > ***free*** --show memory and swap area occupancy
 
 	> Get more detailed infromation http://www.runoob.com/linux/linux-filesystem.html
 <br>
 
 6. > ## Compress
 	- > ***tar cf file.tar files*** -- create tar file ' *file.tar*' including '*files*'
-	- > ***tar xf file.tar** --extracting files from file.tar
-	- > ***tar czf file.tar.gz files --create compress tar file by Gzip
-	- > ***tar xzf file.tar.gz --extracting tar file frome file.tar.gz
-	- > ***tar cjf file.tar.bz2** --create compress tar file by Bzip2
-	- > ***tar xjf file.tar.bz2**  --extracting tar file 
-	- > ***gzip file *** --compress file && named file.gz
-	- > *** gzip -d file*** --extracting file
+	- > ***tar xf file.tar*** --extracting files from file.tar
+	- > ***tar czf file.tar.gz files*** --create compress tar file by Gzip
+	- > ***tar xzf file.tar.gz*** --extracting tar file frome file.tar.gz
+	- > ***tar cjf file.tar.bz2*** --create compress tar file by Bzip2
+	- > ***tar xjf file.tar.bz2***  --extracting tar file 
+	- > ***gzip file*** --compress file && named file.gz
+	- > ***gzip -d file*** --extracting file
 <br>
 
 
 7. > ## Network
 	- > ***ping host*** --ping host && show result
-	- > **whois domain*** -- get domwain's whois information
+	- > ***whois domain*** -- get domwain's whois information
 	- > ***dig domain*** -get domain's DNS infromation
-	- > ***dig -x host** --reverse query host
+	- > ***dig -x host*** --reverse query host
 	- > ***wget file*** -- download file
 	- > ***wget -c file*** -- broken point and continue download
 
