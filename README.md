@@ -1,6 +1,7 @@
 
-# <p style="text-align:center;">NoteBook</p>
-+ >     输 入  
+# NoteBook
+
++ >     输 入
 + >                      思 考
 + >                                             消 化
 + >                                                   整 理
