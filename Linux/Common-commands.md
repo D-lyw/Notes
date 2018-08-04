@@ -60,7 +60,7 @@
 	- > command | grep pattern  -- search for content of pattern in output pattern
 
 
-5. > ##System Information
+5. > ## System Information
 	- > ***date***   --show current date and time
 	- > ***cal***   --show current calendar
 	- > ***uptime***  --show when the system is running from start to run 
@@ -94,7 +94,7 @@
 	- > ***wget file*** -- download file
 	- > ***wget -c file*** -- broken point and continue download
 
-8. >##Install
+8. > ## Install
    - > ***./configure***
    - > ***make***
    - > ***make install***
