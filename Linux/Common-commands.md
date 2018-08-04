@@ -41,9 +41,11 @@
 		+ 4 -read(r)
 		+ 2 -write(w)
 		+ 1 -execute(x)
-	> eg:
-	> **chmod 777** - add read, write, execute permission for all user
-	> **chmod 755** - add rwx permission for owner,add rx permission for group and other users.
+	- > eg:
+	
+	- > **chmod 777** - add read, write, execute permission for all user
+	
+	- > **chmod 755** - add rwx permission for owner,add rx permission for group and other users.
 
 <br>
 
