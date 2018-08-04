@@ -78,6 +78,7 @@
 	- > ***du*** --show directory space occupancy
 	- > *** free*** --show memory and swap area occupancy
 
+	> Get more detailed infromation http://www.runoob.com/linux/linux-filesystem.html
 <br>
 
 6. > ## Compress
