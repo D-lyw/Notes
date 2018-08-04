@@ -59,6 +59,7 @@
 	- > *** grep -r pattern dir  --recursive search for content of pattern in dir
 	- > command | grep pattern  -- search for content of pattern in output pattern
 
+<br>
 
 5. > ## System Information
 	- > ***date***   --show current date and time
@@ -75,6 +76,8 @@
 	- > ***du*** --show directory space occupancy
 	- > *** free*** --show memory and swap area occupancy
 
+<br>
+
 6. > ## Compress
 	- > ***tar cf file.tar files*** -- create tar file ' *file.tar*' including '*files*'
 	- > ***tar xf file.tar** --extracting files from file.tar
@@ -84,6 +87,7 @@
 	- > ***tar xjf file.tar.bz2**  --extracting tar file 
 	- > ***gzip file *** --compress file && named file.gz
 	- > *** gzip -d file*** --extracting file
+<br>
 
 
 7. > ## Network
@@ -94,12 +98,16 @@
 	- > ***wget file*** -- download file
 	- > ***wget -c file*** -- broken point and continue download
 
+<br>
+
 8. > ## Install
    - > ***./configure***
    - > ***make***
    - > ***make install***
    - >***dpkg -i pkg.deb***  --installation package(Debian)
    - > ***rpm -Uvh pag.rpm*** --installation package(RPM)
+
+<br>
 
 9. > ## Shortcut key
 	- > ***Ctrl + C*** --stop current command
