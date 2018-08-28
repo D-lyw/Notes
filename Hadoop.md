@@ -50,9 +50,12 @@
     > 关闭开机启动 (如果只是简单的关闭防火墙，则机器重启时会开启防火墙）
     \# systemctl disable firewalld.service &nbsp;&nbsp;&nbsp;(chkconfig iptables off)
 
-3. 网络设置
+4. 网络设置
+
 	vi /etc/hosts 
     修改主机名和ip的映射关系
+5. 免密钥登陆配置
+    
 
 4. 
 	
