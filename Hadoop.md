@@ -51,5 +51,8 @@
     \# systemctl disable firewalld.service &nbsp;&nbsp;&nbsp;(chkconfig iptables off)
 
 3. 网络设置
+	vi /etc/hosts 
+    修改主机名和ip的映射关系
+
 4. 
 	
