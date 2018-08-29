@@ -49,17 +49,17 @@
 
     +  查看防火墙状态&nbsp;&nbsp;&nbsp;(括号中为旧版操作命令，下同）
         ```
-        # systemctl status iptables.service   &nbsp;&nbsp;&nbsp;(service iptables status)
+        # systemctl status iptables.service   (service iptables status)
         ```
 	
     +  关闭防火墙
        ```
-       # systemctl stop firewalld.service &nbsp;&nbsp;&nbsp;(service iptables stop)
+       # systemctl stop firewalld.service  (service iptables stop)
        ```
        
     +  关闭开机启动 (如果只是简单的关闭防火墙，则机器重启时会开启防火墙）
         ```
-       # systemctl disable firewalld.service &nbsp;&nbsp;&nbsp;(chkconfig iptables off)
+       # systemctl disable firewalld.service   (chkconfig iptables off)
         ```
 	
 4. ***网络设置***
@@ -152,16 +152,20 @@
    (使用exit命令,从远程节点退回到本地计算机)
 
 	
-<br>
+<br/>
+<br/>
+
 ## Hadoop HDFS 安装与配置
 
 
 > 注意: 每个结点的安装和配置是相同的,在实际工作中,通常在Master节点上完成安装和配置,然后将安装目录复制到其他的节点即可.(这里的所有操作是root权限)
 
 <br>
-1. ***下载解压安装 Hadoop***
 
-	推荐在 archive.apache.org中下载 新手下载稳定版本使用.
+ 1. ***下载解压安装 Hadoop***
+
+    推荐在 archive.apache.org中下载 新手下载稳定版本使用.
+    
     ```
     # wget https://archive.apache.org/dist/hadoop/core/stable/hadoop-2.9.1.tar.gz
     ```
@@ -170,10 +174,12 @@
     # tar -zxvf hadoop-2.9.1.tar.gz -C ~/
     ```
     解压成功后,系统则在用户目录下面自动创建Hadoop-2.9.1子目录,此为Hadoop的安装目录
+    
 
 2. ***配置 Hadoop 环境变量***
 
-	Hadoop 的环境变量文件是 hadoop-env.sh, 它在hadoop安装目录的子目录中,我们只需要修改该文件的JDK路径即可
+    Hadoop 的环境变量文件是 hadoop-env.sh, 它在hadoop安装目录的子目录中,我们只需要修改该文件的JDK路径即可
+    
     ```
     # vi /home/dlyw/hadoop-2.9.1/etc/hadoop/hadoop-env.sh 
     ```
@@ -183,7 +189,8 @@
 
 3. ***配置 Yarn 环境变量***
 
-	Yarn 的环境变量文件是 Yarn-env.sh, 它也在hadoop安装目录的子目录中,我们只需要修改该文件的JDK路径即可
+    Yarn 的环境变量文件是 Yarn-env.sh, 它也在hadoop安装目录的子目录中,我们只需要修改该文件的JDK路径即可
+    
     ```
     # vi /home/dlyw/hadoop-2.9.1/etc/hadoop/yarn-env.sh 
     ```
@@ -191,19 +198,20 @@
     
     将 /home/y/libexec/jdk1.6.0/ 用**实际的jdk路径**替换,保存,退出即可
 
-4. *** 配置核心组件文件 ***
+4. ***配置核心组件文件***
   
    Hadoop的核心组件文件是 core-site.xml,也位于hadoop安装目录的子目录中,编辑该文件
+   
    ```
    # vi /home/dlyw/hadoop-2.9.1/etc/hadoop/core-site.xml
    
    需要将下面的配置代码放在文件的<configuration>和\</configuration>之间
    <property>
-   		<name>fs.defaultFS</name>
+   	<name>fs.defaultFS</name>
            <value>hdfs://H-01:9000</value>
    </property>
    <property>
-   		<name>hadoop.tmp.dir</name>
+   	<name>hadoop.tmp.dir</name>
            <value>/home/dlyw/hadoopdata</value>
    </property>
     ```
@@ -212,12 +220,13 @@
 5. ***配置文件系统***
    
     Hadoop的文件系统配置文件是 hdfs-site.xml,也位于hadoop安装目录的子目录中,编辑该文件
+    
    ```
    # vi /home/dlyw/hadoop-2.9.1/etc/hadoop/hdfs-site.xml
    
-   需要将下面的配置代码放在文件的<configuration>和\</configuration>之间
+   需要将下面的配置代码放在文件的<configuration>和</configuration>之间
    <property>
-   		<name>dfs.replication</name>
+   	<name>dfs.replication</name>
            <value>1</value>
    </property>
     ```
@@ -227,6 +236,7 @@
 6. ***配置yarn-site.xml文件***
 
    Yarn的站点配置文件是 yarn-site.xml,也位于hadoop安装目录的子目录中,编辑该文件
+   
    ```
    # vi /home/dlyw/hadoop-2.9.1/etc/hadoop/yarn-site.xml
    
@@ -266,11 +276,15 @@
     编辑完毕,保存退出
 
 7. ***配置MapReduce计算框架文件***
-	在~/hadoop-2.9.1/etc/hadoop子目录下,系统已有一个mapred-site.xml.template文件,我们需要将其复制并改名,位置不变
+
+    在~/hadoop-2.9.1/etc/hadoop子目录下,系统已有一个mapred-site.xml.template文件,我们需要将其复制并改名,位置不变
+    
     ```
     $ cp /home/dlyw/hadoop-2.9.1/etc/hadoop/mapred-site.xml.template /home/hadoop-2.9.1/etc/hadoop/mapred-site.xml
     ```
+    
     然后编辑mapred-site.xml文件
+    
     ```
     $ vi /home//hadoop-2.9.1/etc/hadoop/mapred-site.xml
     
@@ -281,15 +295,16 @@
         <value>yarn</value>
     </property>
     ```
+    
     编辑完成,保存退出.
     
 8. ***配置Master的slaves文件***
+
 > slaves 文件给出Hadoop集群的slavae节点列表.该文件十分重要,启动时系统总是根据当前slaves文件中的slave节点列表启动集群,不在列表中的slave节点便不会视为计算节点
 	
     编辑 slaves 文件
     
-    ```
-	$ vi /home/dlyw/hadoop-2.9.1/etc/hadoop/slaves
+    $ vi /home/dlyw/hadoop-2.9.1/etc/hadoop/slaves
     
     删除文件中原来有的缺省的localhost,然后添加计划投入使用的集群主机,如输入以下代码
   
@@ -297,7 +312,6 @@
     P-02
     P-03
     
-    ```
     编辑完成,保存退出.
 
 9. ***复制 Master 上的 Hadoop 到 Slave 节点***
@@ -312,12 +326,15 @@
    
    这样,我们就完成了 Hadoop 集群的安装和配置!
 
+<br/>
 
 ## Hadoop 集群的启动
 
 > 在首次启动hadoop之前,还需要做一些配置
 
-1. ***配置操作系统环境变量***
+<br/>
+
+ 1. ***配置操作系统环境变量***
 
 	由于我们是在Linux集群上安装的 Hadoop 集群,自然需要配置 Linux 系统平台的环境变量.(需要在集群的所有计算机上进行,以普通用户身份)
     
@@ -339,23 +356,26 @@
 2. ***创建Hadoop数据目录***
 	
     可在用户主目录下,创建数据目录
+    
     ```
     $ mkdir /home/dlyw/hadoopdata
     ```
+    
     这里的数据目录名 'hadoopdata' 需要和前面 Hadoop 核心组件文件 core-site.xml中的配置中的数据目录名保持一致.
     
     其他所有节点也需进行上述配置
 
 3. ***格式化文件系统***
 
-	该操作只需要 Master 节点上进行,命令如下
+    该操作只需要 Master 节点上进行,命令如下
+    
     ```
     $ hdfs namenode -format
     ```
 
 4. ***启动和关闭 Hadoop***
 
-	进入 Hadoop 安装主目录, 然后执行 sbin/start-all.sh 命令
+    进入 Hadoop 安装主目录, 然后执行 sbin/start-all.sh 命令
     
     按照提示输入,即可启动Hadoop.
     
@@ -363,7 +383,7 @@
 
 4. ***启动和关闭 Hadoop***
 
-	进入 Hadoop 安装主目录, 然后执行 sbin/start-all.sh 命令
+    进入 Hadoop 安装主目录, 然后执行 sbin/start-all.sh 命令
     
     按照提示输入,即可启动Hadoop.
     
