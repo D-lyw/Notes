@@ -15,12 +15,12 @@
 
 ## VM 上 Hadoop 伪分布式集群配置
 
-1. **常用命令**
+1. ***常用命令***
 	- ifconfig   查看网络ip信息
 	- hostname   查看主机名
 	- service iptables status  查看防火墙信息
 
-2. **主机名修改**
+2. ***主机名修改***
 
    + 切换到root权限 编辑network配置文件
    
@@ -43,18 +43,24 @@
      在编辑器中将默认的localhost.localdomain主机名改成要修改主机名 
      ```
      
-3. 关闭防火墙
+3. ***关闭防火墙***
 
-    > 查看防火墙状态&nbsp;&nbsp;&nbsp;(括号中为旧版操作命令，下同）
-    \# systemctl status iptables.service   &nbsp;&nbsp;&nbsp;(service iptables status)
-    
-    > 关闭防火墙
-    \# systemctl stop firewalld.service &nbsp;&nbsp;&nbsp;(service iptables stop)
+    +  查看防火墙状态&nbsp;&nbsp;&nbsp;(括号中为旧版操作命令，下同）
+        ```
+        # systemctl status iptables.service   &nbsp;&nbsp;&nbsp;(service iptables status)
+        ```
 	
-    > 关闭开机启动 (如果只是简单的关闭防火墙，则机器重启时会开启防火墙）
-    \# systemctl disable firewalld.service &nbsp;&nbsp;&nbsp;(chkconfig iptables off)
-
-4. 网络设置
+    +  关闭防火墙
+       ```
+       # systemctl stop firewalld.service &nbsp;&nbsp;&nbsp;(service iptables stop)
+       ```
+       
+    +  关闭开机启动 (如果只是简单的关闭防火墙，则机器重启时会开启防火墙）
+        ```
+       # systemctl disable firewalld.service &nbsp;&nbsp;&nbsp;(chkconfig iptables off)
+        ```
+	
+4. ***网络设置***
 	
     + 网络地址修改
     
@@ -74,9 +80,9 @@
 	    ```
 	注意:上述操作,需要在集群的所有主机上进行.
     
-    在任意主机终端,通过 *** ping <主机名> *** 测试连通性
+    在任意主机终端,通过 *ping <主机名>* 测试连通性
     
-5. 安装JDK
+5. ***安装JDK***
 
    Hadoop平台是基于Java环境的,因此我们必须在linxu主机上安装JDK
    由于在新建linux虚拟机的时候,已经安装了jdk环境,所以这次安装JDK步骤就省去了
@@ -103,7 +109,7 @@
    
    最后执行 *** java -version*** 命令,测试是否配置成功!
     
-5. ** 免密钥登陆配置**
+6. ***免密钥登陆配置***
 
    生成ssh免登陆密钥(首先在Maste节点进行配置)
    	$ ssh-keygen -t rsa
