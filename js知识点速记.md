@@ -47,6 +47,9 @@ JSON(jcriptava OBject Notation)是一种轻量级的数据交换格式.,它是�
 <br>
 
 
+
+
+
 #### new操作符 操作流程
 
 1. 创建一个空对象,并且this变量引用改对象,同时还继承了该函数的原型.

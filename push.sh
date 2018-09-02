@@ -7,5 +7,7 @@ then
 describe = "提交代码"
 fi
 git commit -m $describe
-git push
+git push 
+<< "liuyuanwang4321@gmail.com"
+<< "lyw8975678"
 echo "-----OK-----"
