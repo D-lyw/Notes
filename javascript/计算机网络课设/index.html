@@ -1,0 +1,154 @@
+<!-- 
+     @Author D-lyw(刘元旺)
+	 @Class  网络工程1601
+	 @StuId  201613136023
+
+	 @Date   04/09/2018
+
+	 @Name   [ 计算机网络课设　－－　IEEE 802.3 以太网帧封装 ]
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>课设｜计算机网络</title>
+
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./index.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+<body>
+	<h2 id="title">IEEE 802.3 以太网帧封装</h2><br><br>
+	
+
+	<div class="form-horizontal" id="form_input_group">
+
+		<div class="form-group" >
+
+		    <label for="inputEmail3" class="col-sm-1 control-label">Targer Mac</label>
+		    <div class="col-sm-5">
+		      <input type="text" class="form-control" id="input_target" placeholder="eg: ff:ff:ff:ff:ff:ff">
+		    </div>
+
+		    <label for="inputPassword3" class="col-sm-1 control-label">Source Mac</label>
+		    <div class="col-sm-5">
+		      <input type="text" class="form-control" id="input_source" placeholder="eg: ff:ff:ff:ff:ff:ff">
+		    </div>
+
+		</div>
+
+	    <div class="form-group">
+
+		    <label for="inputPassword3" class="col-sm-1 control-label">Data Input</label>
+		    <div class="col-sm-11">
+		    	<textarea class="form-control" id="text_data">
+		    	</textarea>
+		    </div>
+		    
+	    </div>
+
+	    <div class="form-group">
+		    <div class="col-sm-offset-1 col-sm-10 ">
+		    	<button class="btn btn-default" onclick="JudgeFormat()">Data 格式检测</button>
+		      	<button class="btn btn-default "  id="makeCRC" onclick="GetCRC()" data-toggle="modal" data-target="#myModal" disabled='disabled'>CRC 生成</button>
+		    </div>
+	 	</div>
+
+	</div>
+	
+	<!-- bootstrap模态框　用于实现CRC计算过程的可视化 -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		 <div class="modal-dialog" role="document" style="width:50%;">
+		    <div class="modal-content" >
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">循环冗余校验码计算</h4>
+			      </div>
+			      <div class="modal-body" id="msg_show_list">
+			        	
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="$('#makeCRC').attr('disabled',true);">Ok</button>
+			        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+			      </div>
+		    </div>
+		</div>
+	</div>
+	
+	<!-- <div id="Modal" class="">
+		<div class="header">
+			<h4>循环冗余校验码计算</h4>
+		</div>
+		<div class="body" id = 'msg_show_list'>
+			
+		</div>
+		<div>
+			<button>OK</button>
+		</div>
+	</div>
+ -->
+	<table class="table " id="table_package">	
+		<thead>
+			<tr>
+				<td>Target Mac</td>
+				<td>Source Mac</td>
+				<td>Length</td>
+				<td>Data convery</td>
+				<td>FCS</td>
+			</tr>
+		</thead>
+
+		<tbody id="table_mac">
+			<!-- <tr>
+				<td>Broadcast(ff:ff:ff:ff:ff:ff)</td>
+				<td>14:14:4b:72:7d:e5</td>
+				<td>ARP(0x0806)</td>
+				<td>Padding(46B)</td>
+				<td>dsfds</td>
+			</tr>
+			<tr>
+				<td>Broadcast(ff:ff:ff:ff:ff:ff)</td>
+				<td>14:14:4b:72:7d:e5</td>
+				<td>ARP(0x0806)</td>
+				<td>Padding(46B)</td>
+				<td>dsfds</td>
+			</tr> -->
+		</tbody>
+	</table>
+	
+	<br>
+	
+	<div class="panel panel-default" id="panel_show_all">
+		
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="panel-heading">
+					Mac帧二进制代码串
+				</div>
+				<div class="panel-body" id="show_data_binary" style="word-break: break-all;">
+				
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="panel-heading">
+					Mac帧十六进制代码串
+				</div>
+				<div class="panel-body" id="show_data_ox" style="word-break: break-all;">
+				
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+
+
+	
+	<!-- jQuery -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- import index.js -->
+	<script type="text/javascript" src="./index.js"></script>
+</body>
+</html>
