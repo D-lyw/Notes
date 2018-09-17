@@ -207,10 +207,9 @@ function GetCRC() {
 
 	document.getElementById("msg_show_list").innerHTML = '';
 
-	// Sleep(500);
 	$("#msg_show_list").append("<h5>开始获取二进制TargetMac地址.....</h5>")
 	$("#msg_show_list").append("<p>"+obj_mac.target_mac+" &nbsp;&nbsp;&nbsp; ---> &nbsp;&nbsp;&nbsp; "+obj_mac.target_binary+"</p>");
-	// Sleep(1000);
+
 	$("#msg_show_list").append("<p>开始获取二进制SourceMac地址...</p>");
 	$("#msg_show_list").append("<p>"+obj_mac.source_mac+" &nbsp;&nbsp;&nbsp; ---> &nbsp;&nbsp;&nbsp; "+obj_mac.source_binary+"</p>");
 
@@ -239,6 +238,7 @@ function GetCRC() {
 
 	// 用于CRC运算的字符串
 	CRC_data_binary = obj_mac.target_binary + obj_mac.source_binary + obj_mac.length_type + obj_mac.data_binary + '00000000';
+	// var CRC_data_binary = parseInt("FFFFFFFF",16).toString(2)+"00000000"
 
 	// 
 	var divisor = '100000111', divisor_num = parseInt(divisor, 2);
@@ -247,26 +247,30 @@ function GetCRC() {
 	var quotient = [];
 
 	// 余数
-	var reminder = CRC_data_binary.substr(0, 9);
+	var reminder = CRC_data_binary.substr(0, 8);
 
 	// var point = 0;
 
-	for(var point = 0;point < CRC_data_binary.length-8; point++){
+	for(var point = 8;point < CRC_data_binary.length ; point++){
 
-		if(CRC_data_binary.charAt(point) == 1){
+		reminder = reminder + CRC_data_binary.charAt(point);
 
-			quotient[point] = 1;
-	        // var str = obj_mac.data_binary.substr(point, 9);
+		if(reminder.charAt(0) == 1){
+			if(reminder.length == 9){
+				quotient[point] = 1;
 
-	        // 转换为10进制 进行异或运算
-			reminder = (divisor_num ^ parseInt(reminder, 2)).toString(2);
-
-			// 余数不足8位用0前置补足
-			reminder = ('00000000' + reminder).substring(reminder.length);
-
-			// console.log(reminder);
-			console.log("商 "+ 1 +",当前得余数为 "+ reminder);
-		}else{
+		        // 转换为10进制 进行异或运算
+				reminder = (divisor_num ^ parseInt(reminder, 2)).toString(2);
+				console.log(point+"   商 "+ 1 +",当前得余数为 "+ reminder);		
+				
+			}else{
+				// reminder = reminder + CRC_data_binary.charAt(point);
+				quotient[point] = 0;	
+				console.log(point+"   商 "+ 0 +",当前得余数为 "+ reminder);
+			}
+			
+		}
+		else{
 			
 			quotient[point] = 0;
 
@@ -274,13 +278,12 @@ function GetCRC() {
 			console.log("商 "+ 0 +",当前得余数为 "+ reminder);
 		}
 
-		reminder += CRC_data_binary.charAt(point+9);
 
 	}
-	
 	console.log(quotient);
 	console.log(reminder);
-
+	// 
+	reminder = ('00000000'+reminder).substring(reminder.length);
 	obj_mac.fcs = '000000000000000000000000' + reminder;
 	Mac_List = [];
 	Mac_List.push(obj_mac);
@@ -323,7 +326,6 @@ function CleanInput(){
 	$("#show_data_ox").text('');
 	$("#show_data_ox").append('<span class="p1 show_tip">'+Mac_List[i].target_mac.replace(/[:]/g,'')+'</span><span class="p2 show_tip">'+Mac_List[i].source_mac.replace(/[:]/g, '')+'</span><span class="p3 show_tip">'+changeToHex(Mac_List[i].length_type)+'</span><span class="p4 show_tip">'+changeToHex(Mac_List[i].data_binary)+'</span><span class="p5 show_tip">'+changeToHex(Mac_List[i].fcs)+'</span>')
 
-	
 }
 
 
