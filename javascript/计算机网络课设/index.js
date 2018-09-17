@@ -187,6 +187,8 @@ function DealData() {
 		for(var i = data.length + 1; i <= 92; i++){
 			obj_mac.data_binary += '0000';
 		}
+	}else if(data.length > 3000){
+		
 	}
 
 	console.log(obj_mac);
@@ -238,7 +240,6 @@ function GetCRC() {
 
 	// 用于CRC运算的字符串
 	CRC_data_binary = obj_mac.target_binary + obj_mac.source_binary + obj_mac.length_type + obj_mac.data_binary + '00000000';
-	// var CRC_data_binary = parseInt("FFFFFFFF",16).toString(2)+"00000000"
 
 	// 
 	var divisor = '100000111', divisor_num = parseInt(divisor, 2);
@@ -281,7 +282,7 @@ function GetCRC() {
 
 	}
 	console.log(quotient);
-	console.log(reminder);
+	console.log("最后的余数: " + reminder);
 	// 
 	reminder = ('00000000'+reminder).substring(reminder.length);
 	obj_mac.fcs = '000000000000000000000000' + reminder;
