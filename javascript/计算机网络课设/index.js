@@ -63,10 +63,10 @@ function JudgeFormat() {
 		return false;
 	}
 
-	if(msg_data.length > 3000){
-		alert("传输的Data超过最大的范围!");
-		return false;
-	}
+	// if(msg_data.length > 3000){
+	// 	alert("传输的Data超过最大的范围!");
+	// 	return false;
+	// }
 
 	obj_mac.target_mac = msg_target;
 	obj_mac.source_mac = msg_source;
@@ -75,7 +75,7 @@ function JudgeFormat() {
 	obj_mac.source_binary = AnalysisMac(msg_source);
 
 	alert("格式正确");
-
+		DealData();
 	$("#makeCRC").attr('disabled',false);
 
 	return true;
@@ -167,28 +167,77 @@ function DealData() {
 	data = data.replace(/[\s\n]/g, "");
 
 	console.log(data.length);
+	if(data.length <= 3000){
+		console.log("xiaoyu 3000");
+		// 记录输入数据的长度
+		var data_binary_length = (Math.ceil(data.length / 2)).toString(2).length;
 
-	// 记录输入数据的长度
-	var data_binary_length = (Math.ceil(data.length / 2)).toString(2).length;
+		obj_mac.length_type =('0000000000000000'+(Math.ceil(data.length / 2)).toString(2)).substring(data_binary_length);
 
-	obj_mac.length_type =('0000000000000000'+(Math.ceil(data.length / 2)).toString(2)).substring(data_binary_length);
+		obj_mac.data_convery = data;
 
-	obj_mac.data_convery = data;
+		obj_mac.data_binary = AnalysisData(data);
 
-	obj_mac.data_binary = AnalysisData(data);
+		// 判断传输部分的长度是否大于或等于46 Byte
+		obj_mac.padding = false;
 
-	// 判断传输部分的长度是否大于或等于46 Byte
-	obj_mac.padding = false;
+		if(data.length < 92){
+			obj_mac.padding = true;
 
-	if(data.length < 92){
-		obj_mac.padding = true;
-
-		// padding data
-		for(var i = data.length + 1; i <= 92; i++){
-			obj_mac.data_binary += '0000';
+			// padding data
+			for(var i = data.length + 1; i <= 92; i++){
+				obj_mac.data_binary += '0000';
+			}
 		}
-	}else if(data.length > 3000){
-		
+		console.log(obj_mac);
+	}
+	else if(data.length > 3000){
+		console.log(data.length);
+		for(var i = 0; i < data.length; i = i + 3000){
+			var mac_list = {
+						length_type: '',
+						Mac_length: 0,
+						data_convery: '',
+						data_binary: '',
+						padding: false,
+						fcs: '',
+						next: false,
+				};
+			if(i+3000 <= data.length){
+				
+				mac_list.data_convery = data.substr(i, 3000);
+				console.log(data.substr(i, 3000))
+				mac_list.data_binary = AnalysisData(data.substr(i,3000));
+				mac_list.Mac_length = Math.ceil(mac_list.data_convery.length / 2);
+				console.log(mac_list.Mac_length);
+				data_binary_length = mac_list.Mac_length.toString(2).length;
+				mac_list.length_type = ('0000000000000000'+(Math.ceil(mac_list.Mac_length)).toString(2)).substring(data_binary_length);
+				mac_list.padding = false;
+
+				mac_list.next = true;
+
+				Mac_List.push(mac_list);
+
+			}else{
+				mac_list.data_convery = data.substring(i);
+				mac_list.data_binary = AnalysisData(mac_list.data_convery);
+				mac_list.Mac_length = Math.ceil(mac_list.data_convery.length / 2);
+				data_binary_length = mac_list.Mac_length.toString(2).length;
+				mac_list.length_type = ('0000000000000000'+(Math.ceil(mac_list.Mac_length)).toString(2)).substring(data_binary_length);
+				mac_list.next = false;
+
+				if (mac_list.Mac_length < 46) {
+					mac_list.padding = true;
+
+					for(var i = mac_list.Mac_length + 1; i <= 46; i++){
+						obj_mac.data_binary += '00000000';
+					}
+				}
+				Mac_List.push(mac_list);
+			}
+		}
+		console.log(Mac_List);
+		console.log(Mac_List[0].Mac_length);
 	}
 
 	console.log(obj_mac);
@@ -217,90 +266,63 @@ function GetCRC() {
 
 	$("#msg_show_list").append("<p>开始检测传输部分的Data长度...</p>");
 
-	DealData();
+
 
 	if (obj_mac.padding) {
 		$("#msg_show_list").append("<p>传输部分的Data长度不足最小长度46Byte, 已自动为其填充</p>");
-	}else{
+	}else if(Mac_List.length == 0){
 		$("#msg_show_list").append("<p>传输部分的Data长度满足条件,开始转换.....</p>");
+	}else if(Mac_List.length !=0){
+		$("#msg_show_list").append("<p>传输部分的Data长度超过1500字节,将自动为期进行分片处理,开始转换.....</p>");
 	}
 
-	$("#msg_show_list").append("<p style='overflow:auto;word-break:break-all'>"+obj_mac.data_convery+"</p>");
-	$("#msg_show_list").append("<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------->></p>"); 
-	$("#msg_show_list").append("<p style='overflow:auto;word-break:break-all'>"+obj_mac.data_binary+"</p>");
+	if(Mac_List.length == 0){
+		$("#msg_show_list").append("<p style='overflow:auto;word-break:break-all'>"+obj_mac.data_convery+"</p>");
+		$("#msg_show_list").append("<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-------->></p>"); 
+		$("#msg_show_list").append("<p style='overflow:auto;word-break:break-all'>"+obj_mac.data_binary+"</p>");
 
-	$("#msg_show_list").append("<h5>下列二进制串将进行CRC算法，生成FCS</h5>");
-	$("#msg_show_list").append("<p style='overflow:auto;word-break:break-all'>"+ obj_mac.target_binary+obj_mac.source_binary+obj_mac.length_type+obj_mac.data_binary+"</p>");
-	
+		$("#msg_show_list").append("<h5>下列二进制串将进行CRC算法，生成FCS</h5>");
+		$("#msg_show_list").append("<p style='overflow:auto;word-break:break-all'>"+ obj_mac.target_binary+obj_mac.source_binary+obj_mac.length_type+obj_mac.data_binary+"</p>");
+		
 
-	$("#msg_show_list").append("<p>-----------------------------------------------------------------------------------------------------------------------------------------</p>");
-	$("#msg_show_list").append("<p>生成多项式G（X）=X8+X2+X1+1       ---->   除数 100000111</p>")
-	$("#msg_show_list").append("<p>被除数左移8位 开始运算</p>");
+		$("#msg_show_list").append("<p>-----------------------------------------------------------------------------------------------------------------------------------------</p>");
+		$("#msg_show_list").append("<p>生成多项式G（X）=X8+X2+X1+1       ---->   除数 100000111</p>")
+		$("#msg_show_list").append("<p>被除数左移8位 开始运算</p>");
 
+		reminder = CRC(obj_mac.target_binary, obj_mac.source_binary,obj_mac.length_type, obj_mac.data_binary);
+		obj_mac.fcs = '000000000000000000000000' + reminder;
+		Mac_List = [];
+		Mac_List.push(obj_mac);
 
-	// 用于CRC运算的字符串
-	CRC_data_binary = obj_mac.target_binary + obj_mac.source_binary + obj_mac.length_type + obj_mac.data_binary + '00000000';
+		obj_mac = {};
 
-	// 
-	var divisor = '100000111', divisor_num = parseInt(divisor, 2);
+		$("#msg_show_list").append("<p>.............................</p>");
+		$("#msg_show_list").append("<p>.............................</p>");
+		$("#msg_show_list").append("<p>.............................</p>");
 
-	// 商
-	var quotient = [];
+		$("#msg_show_list").append("<p>最后获取的8位余数为: "+reminder+"</p>");
+	}else{
+		for(var i = 0; i < Mac_List.length ; i++){
+			console.log(Mac_List[i].Mac_length);
+			$("#msg_show_list").append("<br><p style='overflow:auto;word-break:break-all'>第"+ (i+1) +"片长度为:"+Mac_List[i].Mac_length+"B</p>");
+			$("#msg_show_list").append("<p style='overflow:auto;word-break:break-all'>开始CRC运算...</p>");
+			var reminder = CRC(obj_mac.target_binary, obj_mac.source_binary, Mac_List[i].length_type, Mac_List[i].data_binary);
+			Mac_List[i].fcs = '000000000000000000000000' + reminder;
+			$("#msg_show_list").append("<p>.............................</p>");
+			$("#msg_show_list").append("<p>.............................</p>");
+			$("#msg_show_list").append("<p>.............................</p>");
 
-	// 余数
-	var reminder = CRC_data_binary.substr(0, 8);
-
-	// var point = 0;
-
-	for(var point = 8;point < CRC_data_binary.length ; point++){
-
-		reminder = reminder + CRC_data_binary.charAt(point);
-
-		if(reminder.charAt(0) == 1){
-			if(reminder.length == 9){
-				quotient[point] = 1;
-
-		        // 转换为10进制 进行异或运算
-				reminder = (divisor_num ^ parseInt(reminder, 2)).toString(2);
-				console.log(point+"   商 "+ 1 +",当前得余数为 "+ reminder);		
-				
-			}else{
-				// reminder = reminder + CRC_data_binary.charAt(point);
-				quotient[point] = 0;	
-				console.log(point+"   商 "+ 0 +",当前得余数为 "+ reminder);
-			}
-			
+			$("#msg_show_list").append("<p>最后获取的8位余数为: "+reminder+"</p>");
 		}
-		else{
-			
-			quotient[point] = 0;
-
-			reminder = reminder.substring(1);
-			console.log("商 "+ 0 +",当前得余数为 "+ reminder);
-		}
-
-
 	}
-	console.log(quotient);
-	console.log("最后的余数: " + reminder);
-	// 
-	reminder = ('00000000'+reminder).substring(reminder.length);
-	obj_mac.fcs = '000000000000000000000000' + reminder;
-	Mac_List = [];
-	Mac_List.push(obj_mac);
 
-	obj_mac = {};
+
 
 	console.log(Mac_List);
 	console.log("IEEE 802.3帧封装成功！");
 
-
-	$("#msg_show_list").append("<p>.............................</p>");
-	$("#msg_show_list").append("<p>.............................</p>");
-	$("#msg_show_list").append("<p>.............................</p>");
-
-	$("#msg_show_list").append("<p>最后获取的8位余数为: "+reminder+"</p>");
 	$("#msg_show_list").append("<h6>注：每一步的商，以及对应的余数，可在浏览器的控制台中查看.</h6>");
+
 
 	CleanInput();
 }
@@ -313,20 +335,42 @@ function CleanInput(){
 	$("#text_data").val('');
 
 	$("#table_mac").text('');
-	for(var i = 0; i < Mac_List.length; i++){
-		$("#table_mac").append("<tr><td class='td_table' onclick='ShowClickMsg(1)'>"+Mac_List[i].target_mac+"</td><td class='td_table' onclick='ShowClickMsg(2)'>"+Mac_List[i].source_mac+"</td><td class='td_table' onclick='ShowClickMsg(3)'>"+Mac_List[i].length_type+"</td><td class='data_byte_num td_table' onclick='ShowClickMsg(4)'>"+(Mac_List[i].data_binary.length/8)+"B</td><td class='td_table' onclick='ShowClickMsg(5)'>"+Mac_List[i].fcs+"</td></tr>")
-		if(Mac_List[i].padding){
-			$(".data_byte_num").text("Padding(46B)");
+	if(Mac_List.length <= 1){
+		for(var i = 0; i < Mac_List.length; i++){
+			$("#table_mac").append("<tr><td class='td_table' onclick='ShowClickMsg(1)'>"+Mac_List[i].target_mac+"</td><td class='td_table' onclick='ShowClickMsg(2)'>"+Mac_List[i].source_mac+"</td><td class='td_table' onclick='ShowClickMsg(3)'>"+Mac_List[i].length_type+"</td><td class='data_byte_num td_table' onclick='ShowClickMsg(4)'>"+(Mac_List[i].data_binary.length/8)+"B</td><td class='td_table' onclick='ShowClickMsg(5)'>"+Mac_List[i].fcs+"</td></tr>")
+			if(Mac_List[i].padding){
+				$(".data_byte_num").text("Padding(46B)");
+			}
 		}
-	}
+		
+		var i = Mac_List.length - 1;
+		$("#show_data_binary").text('');
+		$("#show_data_binary").append('<span class="p1 show_tip">'+Mac_List[i].target_binary+'</span><span class="p2 show_tip">'+Mac_List[i].source_binary+'</span><span class="p3 show_tip">'+Mac_List[i].length_type+'</span><span class="p4 show_tip">'+Mac_List[i].data_binary+'</span><span class="p5 show_tip">'+Mac_List[i].fcs+'</span>')
+
+		$("#show_data_ox").text('');
+		$("#show_data_ox").append('<span class="p1 show_tip">'+Mac_List[i].target_mac.replace(/[:]/g,'')+'</span><span class="p2 show_tip">'+Mac_List[i].source_mac.replace(/[:]/g, '')+'</span><span class="p3 show_tip">'+changeToHex(Mac_List[i].length_type)+'</span><span class="p4 show_tip">'+changeToHex(Mac_List[i].data_binary)+'</span><span class="p5 show_tip">'+changeToHex(Mac_List[i].fcs)+'</span>')
 	
-	var i = Mac_List.length - 1;
-	$("#show_data_binary").text('');
-	$("#show_data_binary").append('<span class="p1 show_tip">'+Mac_List[i].target_binary+'</span><span class="p2 show_tip">'+Mac_List[i].source_binary+'</span><span class="p3 show_tip">'+Mac_List[i].length_type+'</span><span class="p4 show_tip">'+Mac_List[i].data_binary+'</span><span class="p5 show_tip">'+Mac_List[i].fcs+'</span>')
+	}else{
+		for(var i = 0; i < Mac_List.length; i++){
+			$("#table_mac").append("<tr><td class='td_table' onclick='ShowClickMsg(1)'>"+obj_mac.target_mac+"</td><td class='td_table' onclick='ShowClickMsg(2)'>"+obj_mac.source_mac+"</td><td class='td_table' onclick='ShowClickMsg(3)'>"+Mac_List[i].length_type+"</td><td class='data_byte_num td_table' onclick='ShowClickMsg(4)'>"+(Mac_List[i].data_binary.length/8)+"B</td><td class='td_table' onclick='ShowClickMsg(5)'>"+Mac_List[i].fcs+"</td></tr>")
+			if(Mac_List[i].padding){
+				$(".data_byte_num").text("Padding(46B)");
+			}
+			if(i == 0){
+				$("#name_1").text("第"+(i+1)+"片MAC帧");
+				$("#show_data_binary").text('');
+				$("#show_data_binary").append('<span class="p1 show_tip">'+obj_mac.target_mac.replace(/[:]/g,'')+'</span><span class="p2 show_tip">'+obj_mac.source_mac.replace(/[:]/g, '')+'</span><span class="p3 show_tip">'+changeToHex(Mac_List[i].length_type)+'</span><span class="p4 show_tip">'+changeToHex(Mac_List[i].data_binary)+'</span><span class="p5 show_tip">'+changeToHex(Mac_List[i].fcs)+'</span>')
+			}else{
+				$("#name_2").text("第"+(i+1)+"片MAC帧");
+				$("#show_data_ox").text('');
+				$("#show_data_ox").append('<span class="p1 show_tip">'+obj_mac.target_mac.replace(/[:]/g,'')+'</span><span class="p2 show_tip">'+obj_mac.source_mac.replace(/[:]/g, '')+'</span><span class="p3 show_tip">'+changeToHex(Mac_List[i].length_type)+'</span><span class="p4 show_tip">'+changeToHex(Mac_List[i].data_binary)+'</span><span class="p5 show_tip">'+changeToHex(Mac_List[i].fcs)+'</span>')			}
+		}
 
-	$("#show_data_ox").text('');
-	$("#show_data_ox").append('<span class="p1 show_tip">'+Mac_List[i].target_mac.replace(/[:]/g,'')+'</span><span class="p2 show_tip">'+Mac_List[i].source_mac.replace(/[:]/g, '')+'</span><span class="p3 show_tip">'+changeToHex(Mac_List[i].length_type)+'</span><span class="p4 show_tip">'+changeToHex(Mac_List[i].data_binary)+'</span><span class="p5 show_tip">'+changeToHex(Mac_List[i].fcs)+'</span>')
 
+	}
+
+	obj_mac = {};
+	Mac_List = [];
 }
 
 
@@ -370,7 +414,7 @@ aa1ef5a4bce385b0dbecd73f69fa7dedf33b6429
 301ffb0de35e0d408c416aa5d0a1bd8458c15138
 19434ce863ae9c88eace27cc39611d5313caf4ba
 f7990e16a11e94ebf6e2e11d862db90614bb797c
-afc1a7f47789bdba27420ede2b43bba8475d16c7
+afc1a7f47789bdba27420ede2b43bba8475d16c7   
 d1034616cb808ecf04cfee0f11700845c1d542f9
 ac2ee065691f76297312de9e1a002efbee4d6db5
 f0bc36671aa4e2ff1e97af51a02701bdd88ad1cb
@@ -429,8 +473,60 @@ df2104b49aa8c718d2caee9149cd
 
 
 
+/**
+ * [CRC getCRC]
+ * @param {[type]} target_binary [description]
+ * @param {[type]} source_binary [description]
+ * @param {[type]} length_type   [description]
+ * @param {[type]} data_binary   [description]
+ */
+function CRC(target_binary, source_binary, length_type, data_binary){
+	var CRC_data_binary = target_binary + source_binary + length_type + data_binary + '00000000';
 
+	// 
+	var divisor = '100000111', divisor_num = parseInt(divisor, 2);
 
+	// 商
+	var quotient = [];
+
+	// 余数
+	var reminder = CRC_data_binary.substr(0, 8);
+
+	// var point = 0;
+
+	for(var point = 8;point < CRC_data_binary.length ; point++){
+
+		reminder = reminder + CRC_data_binary.charAt(point);
+
+		if(reminder.charAt(0) == 1){
+			if(reminder.length == 9){
+				quotient[point] = 1;
+
+		        // 转换为10进制 进行异或运算
+				reminder = (divisor_num ^ parseInt(reminder, 2)).toString(2);
+				console.log(point+"   商 "+ 1 +",当前得余数为 "+ reminder);		
+				
+			}else{
+				// reminder = reminder + CRC_data_binary.charAt(point);
+				quotient[point] = 0;	
+				console.log(point+"   商 "+ 0 +",当前得余数为 "+ reminder);
+			}
+			
+		}
+		else{		
+			quotient[point] = 0;
+
+			reminder = reminder.substring(1);
+			console.log("商 "+ 0 +",当前得余数为 "+ reminder);
+		}
+	}
+	console.log(quotient);
+	console.log("最后的余数: " + reminder);
+	// 
+	reminder = ('00000000'+reminder).substring(reminder.length);
+
+	return reminder;
+}
 
 
 
