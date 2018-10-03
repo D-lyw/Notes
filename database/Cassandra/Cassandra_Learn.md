@@ -7,8 +7,8 @@
 
 ##### 重点相关知识
 
-- [Cassandra部署策略](http://www.voidcn.com/article/p-tfszppvm-we.html)
-这篇文章总结了Cassandra中使用的各种策略，包括数据分局策略，数据备份策略，网络拓扑策略，数据一致性策略和存储策略等
+- [Cassandra部署策略](http://www.voidcn.com/article/p-tfszppvm-we.html)(重点了解)
+这篇文章总结了Cassandra中使用的各种策略，包括**数据分局策略**，**数据备份策略**，**网络拓扑策略**，**数据一致性策略和存储策略**等
 
 
 
