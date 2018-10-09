@@ -1,11 +1,9 @@
-## Cassandra_learn
+# Cassandra_learn
 
-
-> ###### 由于导师制的题目中要用到Cassandra集群来搭建项目的数据和数据签名的存储部分,计划用docker来搭建Cassandra集群.
-
+>  由于导师制的题目中要用到Cassandra集群来搭建项目的数据和数据签名的存储部分,计划用docker来搭建Cassandra集群.
 > Cassandra 是一个来自Apache的分布式数据库,具有高度的可扩展性,可以用于管理大量的结构化数据.它提供了高可用性,没有单点故障.
 
-##### 重点相关知识
+## 重点相关知识
 
 - [Cassandra部署策略](http://www.voidcn.com/article/p-tfszppvm-we.html)(重点了解)
 这篇文章总结了Cassandra中使用的各种策略，包括**数据分局策略**，**数据备份策略**，**网络拓扑策略**，**数据一致性策略和存储策略**等
