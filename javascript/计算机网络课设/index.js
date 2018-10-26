@@ -475,54 +475,41 @@ df2104b49aa8c718d2caee9149cd
 
 /**
  * [CRC getCRC]
- * @param {[type]} target_binary [description]
- * @param {[type]} source_binary [description]
- * @param {[type]} length_type   [description]
- * @param {[type]} data_binary   [description]
+ * @param {string} target_binary [目的mac地址]
+ * @param {string} source_binary [源mac地址]
+ * @param {string} length_type   [长度部分]
+ * @param {string} data_binary   [数据部分]
  */
 function CRC(target_binary, source_binary, length_type, data_binary){
 	var CRC_data_binary = target_binary + source_binary + length_type + data_binary + '00000000';
-
 	// 
 	var divisor = '100000111', divisor_num = parseInt(divisor, 2);
-
 	// 商
 	var quotient = [];
-
 	// 余数
 	var reminder = CRC_data_binary.substr(0, 8);
 
-	// var point = 0;
-
 	for(var point = 8;point < CRC_data_binary.length ; point++){
-
 		reminder = reminder + CRC_data_binary.charAt(point);
-
 		if(reminder.charAt(0) == 1){
 			if(reminder.length == 9){
 				quotient[point] = 1;
-
 		        // 转换为10进制 进行异或运算
 				reminder = (divisor_num ^ parseInt(reminder, 2)).toString(2);
 				console.log(point+"   商 "+ 1 +",当前得余数为 "+ reminder);		
-				
 			}else{
-				// reminder = reminder + CRC_data_binary.charAt(point);
 				quotient[point] = 0;	
 				console.log(point+"   商 "+ 0 +",当前得余数为 "+ reminder);
 			}
-			
 		}
 		else{		
 			quotient[point] = 0;
-
 			reminder = reminder.substring(1);
 			console.log("商 "+ 0 +",当前得余数为 "+ reminder);
 		}
 	}
 	console.log(quotient);
 	console.log("最后的余数: " + reminder);
-	// 
 	reminder = ('00000000'+reminder).substring(reminder.length);
 
 	return reminder;
