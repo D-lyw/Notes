@@ -198,4 +198,8 @@ test
 --- 
 
 > 写完实验报告,晚上复习密码学
-> google,思考如何实现nodejs 在hadoop集群上执行maprude计算, 对文件进行签名1
+> google,思考如何实现nodejs 在hadoop集群上执行maprude计算, 对文件进行签名
+
+11月28日
+---
+> 看完一本docker
