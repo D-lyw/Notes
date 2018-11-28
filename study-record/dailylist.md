@@ -202,4 +202,5 @@ test
 
 11月28日
 ---
-> 看完一本docker
+> 看完一本docker实战, 看了一下hadoopn中关于mapreduce的部分,由于hadoop集群是在docker环境中,使得操作起来无从下手,网上关于nodejs来操作mapreduce的内容,也没有实质性可以参考的
+> 还是在docker环境中把网上的wordcount的例子给跑出来了,算是个好的开始,最终还是需要利用hadoop的streaming接口来使用它的mapreduce运算框架
