@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>简单实现双向数据绑定</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    
+    <input type="text" id="INPUT">
+
+    // animation动画
+    <div style="border:1px solid red; width: 300px; height: 300px; animation: animationTest 5s infinite;"></div>
+    <style>
+    @keyframes animationTest{
+        0% {
+            top: 0px;
+        }
+        50% {
+            width: 100px;
+            height: 100px;
+            margin-top: 300px;
+            margin-left: 300px;
+        }
+        100% {
+            width: 300px;
+            height: 300px;
+            margin-top: 600px;
+            margin-left: 600px;
+        }
+    }
+    </style>
+
+    <script>
+        var data = {};
+        var node = document.getElementById("INPUT");
+        Object.defineProperty(data, "text", {
+            set(value){
+                node.value = value;
+                text = value;
+            }
+        });
+        node.onchange = function(e){
+            console.log(e);
+            data.text = e.target.value;
+            console.log(data.text);
+        }
+    </script>
+</body>
+</html>
