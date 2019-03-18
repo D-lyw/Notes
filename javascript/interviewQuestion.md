@@ -39,6 +39,7 @@
 + webpack
 + ES6
 + 前端页面的路由权限设置
++ vue怎样检测UI变化
 
 ### vue.js相关
 
