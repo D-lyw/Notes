@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <!-- <div id="app">
+        <child :passvalue="sendMsg"></child>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                sendMsg: 'hello child!'
+            }, 
+            methods: {
+
+            },
+            components: {
+                child: {
+                    template: "<div> child something {{passvalue}}</div>",
+                    data(){
+                        return {
+
+                        }
+                    },
+                    props: ['passvalue']
+                }
+            }
+        })
+    </script> -->
+
+    <!-- 父组件给子组件传值 -->
+    <div id="app">
+        <child @func="recvMsg"></child>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data:{
+
+            },
+            components: {
+                child: {
+                    template: "<div> I'm a child component! <button @click='send'>send msg to parent</button></div>",
+                    methods: {
+                        send(){
+                            this.$emit('func', 123);
+                        }
+                    },
+                }
+            },
+            methods: {
+                recvMsg(data){
+                    console.log(`receive msg --> ${data} from child`);
+                }
+            },
+        })
+    </script>
+</body>
+</html>
