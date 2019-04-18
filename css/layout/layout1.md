@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-    <div id="out">
+# 左侧固定, 右侧自适应
+
+```html
+
+<div id="out">
         <div id="left">左侧固定</div>
         <div id="right">右侧自适应</div>
     </div>
@@ -87,5 +81,4 @@
             text-align: center;
         }
     </style>
-</body>
-</html>
+```
