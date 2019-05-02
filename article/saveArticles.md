@@ -15,3 +15,12 @@
 + 跨域 crossOrigin 解决
 
 ##### [文章链接](https://segmentfault.com/a/1190000018754274)
+
+
+## 浏览器/网络
+
+### 2. Berners-Lee 对年轻人的回答的若干问题
+
+#### 主要内容: 
+
+#### [文章链接](https://www.w3.org/People/Berners-Lee/Kids.html)
