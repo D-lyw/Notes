@@ -9,3 +9,15 @@ Linux 链接分为硬链接（命令 *ln*），和软链接（命令 *ln -s*)
 一个软连接（或符号连接）是完全不同的：它是一个包含了路径信息的小小的指定文件。在软连接文件被访问，系统调用open(2)或stat(2)）的时候，操作系统用该文件所包含的路径替换该文件的访问介入点，从而实现对所指文件的访问。（***个人觉得很类似与window中的快捷方式***）。 如果一个软链接所链接的文件被删除，该链接也就达不到效果，失效了
 
 用命令rm(1)和unlink(2)可以删除连接，但不是删除该文件所指向的文件。系统指定调用lstat(2)和readlink(2)来读取连接
+
+
+## linxu 高级命令
+
+#### lsof 列出打开的文件
+
+> lsof -- lists on its standard output file information about files opened by processes
+
+usage:
++ lsof -h
++ man lsof
+
