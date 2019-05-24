@@ -21,3 +21,15 @@ usage:
 + lsof -h
 + man lsof
 
+#### objdump 显示对象文件中的信息
+
+> objdump -- display information from object filesd
+
+usage:
++ objdump -h
++ man objdump
+
+#### objcopy 复制二进制文件， 在这个过程中可以发生变换
+
+> objcopy -- copy and translate object files
+

@@ -78,6 +78,17 @@
 ### 相关链接
 
 + [Linux内核官方网站](https://www.kernel.org/)
-+ [github上保存的最早的linux版本(v.2.6.12)](https://github.com/torvalds/linux/releases?after=v2.6.12)
++ [github上保存的最早的linux版本(v.2.6.12)](https://github.com/torvalds/linux/releases?after=v2.6.12
+
+
+### linux源码追踪 -- TCP三次握手
+
+服务端 accept函数阻塞客户端的连接,
+客户端使用 connect 方法连接到服务器, 
+三次握手的过程就发生在这个过程中.
+
+从 socket 套接字的 connect 方法开始追踪
+
+
 
 
