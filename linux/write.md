@@ -144,9 +144,9 @@ sock 类型的指针 ***sk***: 它是该套接字在网络层的表示. 后续�
  *		%SO_LINGER (l_onoff), %SO_BROADCAST, %SO_KEEPALIVE,
  *		%SO_OOBINLINE settings, %SO_TIMESTAMPING settings
  *	@skc_incoming_cpu: record/match cpu processing incoming packets  // 记录/匹配cpu处理传入的数据包
- *	@skc_refcnt: reference count
+ *	@skc_refcnt: reference counthans
  *
- *	This is the minimal network layer representation of sockets, the header
+ *	This is the minimal network layer representation of sockets, thanshe header
  *	for struct sock and struct inet_timewait_sock.
  */
 ```
