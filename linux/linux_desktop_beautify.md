@@ -16,4 +16,4 @@ Manjaro 桌面
 
 ### gnome 扩展
 
-安装扩展的简单方法, 
+安装扩展的简单方法, 在Chrome应用商店, 安装 GNOME shell extension 插件即可, 在![https://extensions.gnome.org/](https://extensions.gnome.org/) 中可以搜索, 安装管理电脑上的插件.
