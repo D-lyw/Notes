@@ -14,6 +14,16 @@ Manjaro 桌面
 
 ![桌面工具栏](../img/desktop_top_bottom.png)
 
-### gnome 扩展
+### gnome桌面扩展插件
 
-安装扩展的简单方法, 在Chrome应用商店, 安装 GNOME shell extension 插件即可, 在![https://extensions.gnome.org/](https://extensions.gnome.org/) 中可以搜索, 安装管理电脑上的插件.
+安装gnome扩展的简单方法, 在Chrome应用商店, 安装 GNOME shell extension 插件即可, 在[https://extensions.gnome.org/](https://extensions.gnome.org/) 中可以*搜索*, *安装*和*管理*电脑上的插件.
+
+![gnome-shell-extension](../img/gnome_shell_extension.png)
+
+常用的扩展插件有:
+
++ Dash to Dock
+    - 
++ Hide Top Bar
++ User Theme
++ System Monitor
