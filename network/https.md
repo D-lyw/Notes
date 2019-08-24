@@ -27,6 +27,10 @@ SSL/TSL = 非对称加密（如RSA、ECC） + 对称加密（如AES、DES） + �
 
 
 
+### 证书
+
+> A public key or digital certificate (formerly called an SSL certificate) uses a public key and a private key to enable secure communication between a client program (web browser, email client, etc.) and a server over an encrypted SSL (secure socket layer) or TLS (transport layer security) connection. The certificate is used both to encrypt the initial stage of communication (secure key exchange) and to identify the server. The certificate includes information about the key, information about the server identity, and the digital signature of the certificate issuer. If the issuer is trusted by the software that initiates the communication, and the signature is valid, then the key can be used to communicate securely with the server identified by the certificate. Using a certificate is a good way to prevent “man-in-the-middle” attacks, in which someone in between you and the server you think you are talking to is able to insert their own (harmful) content.
+
 
 
 ### 获取服务器的证书
@@ -38,6 +42,8 @@ openssl s_client -showcerts -connect www.example.com:443 </dev/null
 # 如如果远程服务器正在使用SNI(即，在单个IP地址上共享多个SSL主机)，则还需要发送正确的主机名，以获取正确的证书果远程服务器正在使用SNI(即，在单个IP地址上共享多个SSL主机)，则还需要发送正确的主机名，以获取正确的证书
 openssl s_client -showcerts -servername www.example.com -connect www.example.com:443 </dev/null
 ```
+
+
 
 ### 查看https协议的具体过程
 
