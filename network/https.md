@@ -106,3 +106,34 @@ curl -v https://www.google.com
 
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+相关链接
+
++ [OpenSSL 介绍和使用](https://www.jianshu.com/p/fb2ae3dc7986)
++ [OpenSSL官网](https://www.openssl.org/docs/OpenSSLStrategicArchitecture.html)
+
+openssl 功能：
+
+1. 加密文件 
+   + 支持7种对称加密方式(AES、DES、Blowfish、CAST、IDEA、RC2、RC5)
+   + 上述都支持(ECB、CBC、CFB、OFB)
+   + 支持4种非对城加密方式(DH算法、RSA算法、DSA算法、椭圆曲线算法(EC))
+2. 获取摘要 `openssl dgst`
+3. 生成密码
+4. 生成随机数
+5. 生成秘钥对
+6. 创建证书
+
