@@ -80,3 +80,24 @@ console.log(ncz); // "Hi!"
 console.log("ncz" in window); // false
 ```
 
+
+
+
+
+## 二、字符串与正则表达式
+
+
+
+
+
+
+
+## 三、函数
+
+
+
+
+
+
+
+## 四、

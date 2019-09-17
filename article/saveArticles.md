@@ -24,3 +24,15 @@
 #### 主要内容: 
 
 #### [文章链接](https://www.w3.org/People/Berners-Lee/Kids.html)
+
+
+
+
+
+
+
+## 计算机相关
+
++ ### 阮一峰 字符编码介绍 ASCII, UNICODE, UTF-8
+
+  + [文章链接](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)
