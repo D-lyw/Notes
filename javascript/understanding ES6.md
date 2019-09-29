@@ -96,6 +96,12 @@ console.log("ncz" in window); // false
 
 
 
+**带参数默认值的函数**
+
+**剩余参数**
+
+**尾递归优化**
+
 
 
 
