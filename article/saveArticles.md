@@ -33,6 +33,32 @@
 
 
 
+### 级连缓存失效
+
+[文章链接](https://philipwalton.com/articles/cascading-cache-invalidation/)
+
+### 简明 JavaScript 函数式编程入门篇
+
+[文章链接](https://mp.weixin.qq.com/s?__biz=MzA5NzkwNDk3MQ==&mid=2650590402&idx=1&sn=f4983fb1096cffc06bd232da54a193b2&chksm=8891dce6bfe655f0a37cebbd24d007e28e8327fdf6dec21712608ab46f76c80121e1b60f131f&mpshare=1&scene=1&srcid=&sharer_sharetime=1569493981649&sharer_shareid=133db3bb65672c2827a2c6292bcf2c8d#rd)
+
+
+
+### Nodejs中Event loop、process.nextTick()、immediate
+
+[文章链接](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#setimmediate-vs-settimeout)
+
+
+
+### Linux util-linux 库
+
+常用Linux中的命令
+
+[文章链接](https://en.wikipedia.org/wiki/Util-linux)
+
+
+
+
+
 ## 计算机相关
 
 + ### 阮一峰 字符编码介绍 ASCII, UNICODE, UTF-8

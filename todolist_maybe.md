@@ -28,6 +28,12 @@
 
 
 
+19/10/10
+
+- [ ] 级连缓存无效
+
+  [https://philipwalton.com/articles/cascading-cache-invalidation/](https://philipwalton.com/articles/cascading-cache-invalidation/)
+
 
 
 NightWatch.js
