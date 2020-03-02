@@ -1,14 +1,20 @@
 # JS知识速记
 
+
+
 ## js 基本数据类型
 
 Undefied, Null, Boolean, Number, String
+
+
 
 ## js 常见内置对象
 
 数据封装类对象：　Object, Array, Bollean, Number, String
 
 其他对象：　Function, Arguments, Math, Date, RegExp, Error.
+
+
 
 ## call() 和apply()的区别
 
@@ -20,6 +26,8 @@ call 参数的第一个参数是上下文, 后序是实例传入的参数列表.
 
 如: function.call(this, 1, 2, 3);
 
+
+
 ## js获取用户代理(user Agent)
 
     function whatBroser(){
@@ -29,19 +37,35 @@ call 参数的第一个参数是上下文, 后序是实例传入的参数列表.
         document.Browser.userAgent.value = navigator.userAgent;        //用户代理标识
     }
 
+
+
 ## JSON
 
 JSON(jcriptava OBject Notation)是一种轻量级的数据交换格式.,它是基于Javascript的一个子集,数据格式简单,易于读写,占用带宽小.
 
 格式采用键值对,如:{ "age": "12","name":"dlyw"}
 
+
+
 ## new操作符 操作流程
 
-1. 创建一个空对象,并且this变量引用改对象,同时还继承了该函数的原型.
+1. 创建一个实例对象,并且this变量引用改对象,同时还继承了该函数的原型.
 
 2. 属性和方法被加到this引用的对象中.
 
 3. 新创建的对象有this所引用, 并且最后隐士的返回this.
+
+
+
+JavaScript函数有两个内部方法:  [[Call]] 和 [[Construct]]
+
+当通过new调用函数时,执行[[Construct]]方法,创建一个实例对象,然后再执行函数体,将this绑定到实例上
+
+当直接调用的时候,执行[[Call]]方法,直接执行函数体
+
+
+
+
 
 ## null和undefined的区别
 
@@ -69,17 +93,77 @@ null:
 
     http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html
 
+
+
 ## eval　是做什么的？
 
-它的功能是把对应的字符串解析成ｊｓ代码并运行．
-应该避免使用ｅｖａｌ，　不安全，　非常耗性能（２次，一次解析成ｊｓ语句，一次执行）
-有JSON字符串转换为ＪＳＯＮ对象的时候可以用ｅｖａｌ，　var obj = eval('('+str+')').
+它的功能是把对应的字符串解析成js代码并运行．
+应该避免使用eval，　不安全，　非常耗性能（２次，一次解析成ｊｓ语句，一次执行）
+有JSON字符串转换为JSON对象的时候可以用eval，　var obj = eval('('+str+')').
+
+
 
 ## this对象的理解
 
 this　总是指向函数的直接调用者（而非间接调用者）；
 
-如果有ｎｅｗ关键字, this指向new出来的那个对象；
+如果有new关键字, this指向new出来的那个对象；
 
 在事件中，this指向触发这个事件的对象，特殊的时，ＩＥ中的attachEvent中的this总是指向全局对象window.
+
+
+
+## 箭头函数
+
+箭头函数表达式比函数表达式更简洁
+
+没有自己的`this`,`argument`,`super`和`new.target`
+
+适用于原本使用匿名函数的地方,不能作为构造函数
+
+
+
+**更简洁的函数, 不绑定`this`**
+
+
+
+在箭头函数之前,每一个函数根据它是如何被调用的来定义这个函数的this值
+
++ 如果是该函数是一个构造函数，this指针指向一个新的对象
++ 在严格模式下的函数调用下，this指向undefined
++ 如果是该函数是一个对象的方法，则它的this指针指向这个对象
+
+
+
+严格模式中于`this`相关的规则都将被忽略
+
+
+
+**箭头函数不会创建自己的`this`,它只会从自己的作用域链的上一层继承this**
+
+箭头函数没有自己的this指针,调用`call()`,`apply()`方法,只能传参数,不能绑定this,第一个参数会被忽略
+
+
+
+不绑定arguments对象,可以使用剩余参数
+
+
+
+适用于非方法函数(non-method function)
+
+> method: A method is a function which is a property of an object.
+
+
+
+## 词法作用域
+
+
+
+## Promise
+
+
+
+## async/await
+
+
 
