@@ -24,6 +24,12 @@
 
 - #### [深入理解洋葱模型中间件机制](https://juejin.im/post/5dfee04951882512756e97fc)
 
+- Javascript浮点数精度问题
+
+  - https://github.com/camsong/blog/issues/9
+  - [https://www.wikiwand.com/zh-hans/%E9%9B%99%E7%B2%BE%E5%BA%A6%E6%B5%AE%E9%BB%9E%E6%95%B8](https://www.wikiwand.com/zh-hans/雙精度浮點數)
+  - http://www.binaryconvert.com/convert_double.html
+
 ## Node.js
 
 - #### [Nodejs 中 Event loop、process.nextTick()、immediate](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#setimmediate-vs-settimeout)
