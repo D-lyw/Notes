@@ -153,4 +153,4 @@ Public Key PIN:
 pin-sha256:QP1F3b/yof98KLMeipsBzC/8PU+AablPUsP92JwnBqs=
 Server key hash: pin-sha256:QP1F3b/yof98KLMeipsBzC/8PU+AablPUsP92JwnBqs=
 
-Certificate from VPN server "vpn.qihoo.net" failed verification.
+Certificate from VPN server "vpn.qihoo.net" failed verification.;
