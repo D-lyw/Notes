@@ -87,17 +87,79 @@ usage:
 
 #### 2.1 查看端口使用/占用情况
 
+(1)  `lsof`, List open files.
+
+```bash
+// 非系统自带，需安装
+yum install lsof
+lsof -i:<port>
+
+// 例子，查看8080端口使用情况
+lsof -i:8080
+```
+
+(2)  `ps`,   Report a snapshot of the current process.
+
+```bash
+ps aux | grep <applicatioName>
+
+// 例子，查询当前运行Node.js进程的端口
+ps aux | grep node
+```
+
+(3)  `netstat`, Print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+
+```bash
+netstat -nlptu | grep <port>
+ 
+-n 不进行DNS查询
+-l 只显示监听状态套接字
+-p 显示进程名称和进程标识符
+-t 显示Tcp端口
+-u 显示Udp端口
+
+// 例子，查看所有8080端口情况
+netstat -nlptu | grep 8080
+```
+
 
 
 #### 2.2 查看计算机内存使用情况
 
 
 
-#### 2.4 查看/杀死僵尸进程
+#### 2.4 强制关闭进程/杀死僵尸进程
+
+首先单纯的使用kill命令（不加任何标识和修饰符）尝试杀死某一进程
+
+```bash
+kill <pid>
+```
+
+上述命令能解决大部分场景的问题，终止有问题的进程，并将资源释放给系统。但是，如果进程启动了子进程，只杀死父进程，子进程还在运行消耗系统资源，变成僵尸进程。需要确保在杀死父进程前，先杀死所有的子进程。
 
 
 
+给父进程发送`TERM`信号，试图杀死它和它的子进程
 
+```bash
+kill -TERM <ppid>
+```
+
+`killall`杀死同一进程组内所有进程。需要指定要终止的进程名称，而非PID。
+
+```bash
+// 例：终止httpd进程服务
+killall httpd
+```
+
+最后手段`kill -9 <PID>`，这个命令强大而危险，会迫使进程在运行中突然终止，进程在结束后不能自我清理，会导致资源无法正常释放。
+
+
+
+参考链接
+
++ [https://blog.csdn.net/lechengyuyuan/article/details/16337233](https://blog.csdn.net/lechengyuyuan/article/details/16337233)
 
 
 
