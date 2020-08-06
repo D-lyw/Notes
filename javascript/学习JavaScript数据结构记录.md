@@ -7,13 +7,13 @@
         this.pages = pages;
         this.isbn = isbn;
     }
-
+    
     类可以包含函数。可以声明和使用函数,如下所示:
     Book.prototype.printTitle = function(){
         console.log(this.title);
     };
     book.printTitle();
-
+    
     也可以直接在类的定义里声明函数:
     function Book(title, pages, isbn){
         this.title = title;
@@ -24,24 +24,21 @@
         }
     }
 
-在原型的例子里, printTitle 方法只会创建一次,在 Book 类的所有实例中
-***共享***。
+在原型的例子里, printTitle 方法只会创建一次,在 Book 类的所有实例中***共享***。
 
-如果是在定义类的内部结构时声明,每个类的实例都会有一份该方法的副
-本。使用原型方法可以节约内存和降低实例化的开销。
+如果是在定义类的内部结构时声明,每个类的实例都会有一份该方法的副本。使用原型方法可以节约内存和降低实例化的开销。
 
 最好在声明公共方法时使用基于原型的方法。
 
 生成私有方法时用在类定义时内部声明的方式,这样其他实例不会访问到这个方法。
 
-
 ## 数据结构之数组
 
     var list = [];
-
+    
     list.push();
     list.pop();
-
+    
     list.unshift();
     list.shift();
 
