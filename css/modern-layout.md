@@ -1,5 +1,5 @@
 ---
-typora-copy-images-to: ../img
+ztypora-copy-images-to: ../img
 ---
 
 # 现代CSS布局方式
@@ -14,11 +14,47 @@ typora-copy-images-to: ../img
 
 
 
+flex属性是flex-grow、flex-shrink、flex-basis这三个属性的简写形式
+
+flex：flex-grow flex-shrink flex-basis
+
+- flex-basis	项目元素的初始宽度
+- flex-grow    指定如果有多余的宽度，项目是否可以扩大
+- flex-shrink  指定如果宽度不足，项目是否可以缩小
+
+flex：0 1 200px;
+
+
+
+
+
+
+
+
+
+
+
 ## Grid
 
 兼容性: https://caniuse.com/#search=grid
 
 ![grid compatibility](/home/dlyw/D-lyw/Notes/img/grid-compatibility.png)
+
+
+
+Grid支持二维布局方式
+
+
+
+https://jsbin.com/najanat/edit?html,css,output
+
+<a class="jsbin-embed" href="https://jsbin.com/najanat/embed?html,css,output">JS Bin on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?4.1.8"></script>
+
+
+
+
+
+
 
 
 
