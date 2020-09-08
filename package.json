@@ -1,7 +1,5 @@
 {
-  "dependencies": {
-    "global": "^4.4.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0"
   },
