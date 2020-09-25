@@ -4,7 +4,7 @@
 
 ## js 基本数据类型
 
-Undefied, Null, Boolean, Number, String
+Undefied, Null, Boolean, Number, String, Symbol
 
 
 
